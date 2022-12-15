@@ -74,6 +74,7 @@ indent "Create profile.d script"
 mkdir -p ${BUILD_DIR}/.profile.d
 
 ORACLE_HOME="./instantclient_21_7"
+TNS_HOME="./app"
 
 cat <<EOF > ${BUILD_DIR}/.profile.d/oracle.sh
   export OCI_LIB_DIR=${ORACLE_HOME}
@@ -81,7 +82,7 @@ cat <<EOF > ${BUILD_DIR}/.profile.d/oracle.sh
   export OCI_INC_DIR=${ORACLE_HOME}/sdk/include
   export LD_LIBRARY_PATH=${ORACLE_HOME}:\$LD_LIBRARY_PATH
   export PATH=${ORACLE_HOME}:\$PATH
-  export TNS_ADMIN=${ORACLE_HOME}/network/admin/WALLET_ADWPROD
+  export TNS_ADMIN=${TNS_HOME}
   export PKG_CONFIG_PATH=${ORACLE_HOME}
 EOF
 

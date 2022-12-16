@@ -1,3 +1,11 @@
+#!/usr/bin/env bash
+# Usage:
+#
+#     $ bin/compile <build-dir> <env-path>
+
+# Fail fast and fail hard.
+set -eo pipefail
+
 BUILD_DIR=$1
 ENV_DIR=$2
 BIN_DIR=$(cd "$(dirname "$0")"; pwd) # absolute path
@@ -65,7 +73,8 @@ EOF
 indent "Create profile.d script"
 mkdir -p ${BUILD_DIR}/.profile.d
 
-ORACLE_HOME="${HOME}/${ORACLE_INSTANT_CLIENT_DIR}"
+ORACLE_HOME="/app/instantclient_21_7"
+TNS_HOME="/app/config"
 
 cat <<EOF > ${BUILD_DIR}/.profile.d/oracle.sh
   export OCI_LIB_DIR=${ORACLE_HOME}
@@ -73,7 +82,7 @@ cat <<EOF > ${BUILD_DIR}/.profile.d/oracle.sh
   export OCI_INC_DIR=${ORACLE_HOME}/sdk/include
   export LD_LIBRARY_PATH=${ORACLE_HOME}:\$LD_LIBRARY_PATH
   export PATH=${ORACLE_HOME}:\$PATH
-  export TNS_ADMIN="/app/Wallet_ADWPROD"
+  export TNS_ADMIN=${TNS_HOME}
   export PKG_CONFIG_PATH=${ORACLE_HOME}
 EOF
 

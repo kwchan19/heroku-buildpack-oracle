@@ -73,7 +73,7 @@ EOF
 indent "Create profile.d script"
 mkdir -p ${BUILD_DIR}/.profile.d
 
-ORACLE_HOME="/app/instantclient_21_7"
+ORACLE_HOME="${HOME}/${ORACLE_INSTANT_CLIENT_DIR}"
 TNS_HOME="/app/config"
 
 cat <<EOF > ${BUILD_DIR}/.profile.d/oracle.sh

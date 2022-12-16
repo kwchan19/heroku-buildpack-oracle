@@ -5,3 +5,4 @@ export OCI_LIB_DIR=${ORACLE_HOME}
 export OCI_INC_DIR=${ORACLE_HOME}/sdk/include
 export LD_LIBRARY_PATH=${ORACLE_HOME}:${LD_LIBRARY_PATH}
 export PATH=${ORACLE_HOME}:$PATH
+export TNS_ADMIN=/app/instantclient_21_7/network/admin/Wallet_ADWPROD
